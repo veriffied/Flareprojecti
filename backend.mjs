@@ -7,11 +7,8 @@ const port = 5000; // Define the port for your backend
 
 const FORMSPARK_ENDPOINT_URL = 'https://submit-form.com/EUSRpXCa2';
 
-// Configure CORS for localhost development
-// Allowing all origins (*) for simplicity in local testing.
-// For production, you would specify your exact frontend origin.
 app.use(cors({
-    origin: '*', 
+    origin: 'https://flareprojecti.vercel.app', 
     methods: ['GET', 'POST'], 
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -90,5 +87,3 @@ app.listen(port, () => {
     console.log(`Node.js backend listening at http://localhost:${port}`);
 });
 
-// Note: For Vercel deployment, you would remove the app.listen() call and add 'export default app;'
-// For localhost, we keep app.listen() and do NOT export.
