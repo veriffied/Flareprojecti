@@ -1,0 +1,20 @@
+{
+  "name": "flare",
+  "version": "1.0.0",
+  "main": "backend.mjs",  
+  "type": "module",
+  "scripts": {
+    "start": "node backend.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Flare Network Frontend and Backend",
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.5",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2" 
+  }
+}
